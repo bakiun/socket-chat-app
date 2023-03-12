@@ -6,7 +6,7 @@ exports.oldMsgList = async (from, to) => {
     let list = (await Message.findOne({ _id: user[to.uid] })).toObject();
     delete list._id;
     return list;
-  } else return [];
+  } else return {};
 };
 
 exports.saveMsg = async (from, to, msg) => {
