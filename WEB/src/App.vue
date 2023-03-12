@@ -100,7 +100,7 @@ export default {
       username: "baki",
       msg: "",
       userList: [],
-      msgList: [],
+      msgList: {},
       self: null,
       target: {},
       errorStr: "",
