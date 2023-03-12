@@ -16,11 +16,13 @@ exports.onConnect = async (socket, userStore) => {
 
 exports.newMsg = async (data, io) => {
   try {
-    const { from, to, msg } = data;
+    let { from, to, msg } = data;
+    msg = { [Date.now()]: { username: from.username, msg } };
     await saveMsg(from, to, msg);
-    io.to([to.uid, from.uid]).emit("msg:new", { from, msg });
+    io.to(to.uid).emit("msg:new", { from, to, msg });
+    io.to(from.uid).emit("msg:new", { from, to, msg });
   } catch (error) {
-    console.error("Socket sendMsg error: ", error);
+    console.error("Socket newMsg error: ", error);
   }
 };
 
