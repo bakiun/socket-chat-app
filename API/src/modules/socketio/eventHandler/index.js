@@ -1,7 +1,7 @@
 const event = require("./events");
 
 module.exports = async (io, socket, userStore) => {
-  event.onConnect(socket, userStore);
+  await event.onConnect(socket, userStore);
   socket.emit("users", userStore);
 
   //# Sockets
