@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 export default {
   methods: {
     connectSocket(user) {
-      let socket = io(process.env.SOCKET_URI, {
+      let socket = io(process.env.SOCKET_URL, {
         // autoConnect: false,
       });
       this.socket = socket;

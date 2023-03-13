@@ -13,7 +13,7 @@ import { createApp } from "vue";
 // Plugins
 import { registerPlugins } from "@/plugins";
 
-axios.defaults.baseURL = process.env.API_URI;
+axios.defaults.baseURL = process.env.API_URL;
 const app = createApp(App);
 
 registerPlugins(app);

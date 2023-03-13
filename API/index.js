@@ -23,7 +23,7 @@ app.use((error, req, res, next) => {
 });
 
 const expressServer = app.listen(config.port, async () => {
-  await mongoose.connect(config.mongoDBUrl);
+  await mongoose.connect(config.MONGO_DB_URL);
   createSocket(expressServer);
   console.log(`Listening on http://${config.ip}:${config.port}`);
 });

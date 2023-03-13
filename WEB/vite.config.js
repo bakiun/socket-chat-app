@@ -19,8 +19,8 @@ export default defineConfig({
   ],
   define: {
     "process.env": {
-      API_URI: "http://localhost:3001",
-      SOCKET_URI: "ws://localhost:3001",
+      API_URL: "http://localhost:3001",
+      SOCKET_URL: "ws://localhost:3001",
     },
   },
   resolve: {
