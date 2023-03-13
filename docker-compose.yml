@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  database:
+    container_name: "database"
+    restart: always
+    image: bitnami/mongodb
+    environment:
+      MONGODB_ROOT_USER: root
+      MONGODB_ROOT_PASSWORD: rootPass
+      MONGODB_USERNAME: appUser
+      MONGODB_PASSWORD: appPass
+      MONGODB_DATABASE: appDB
+    volumes:
+      - mongo:/home/data
+    ports:
+      - 27017:27017
+
+  api:
+    container_name: "api"
+    depends_on:
+      - database
+    restart: always
+    build:
+      context: ./API
+    environment:
+      PORT: 3001
+      MONGO_DB_URL: mongodb://appUser:appPass@database:27017/appDB
+    ports:
+      - 3001:3001
+
+volumes:
+  mongo:
